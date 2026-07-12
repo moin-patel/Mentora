@@ -1,7 +1,7 @@
 import home from "../assets/stud.jpeg";
 import Nav from "../components/Nav";
 import { SiViaplay } from "react-icons/si";
-import Logos from "../components/Logos";
+import Logos from "../components/logos";
 import ai from "../assets/ai.png";
 import { useNavigate } from "react-router-dom";
 import ExploreCourses from "../components/ExploreCourses";
