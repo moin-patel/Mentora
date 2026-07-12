@@ -30,6 +30,7 @@ const handleLogout = async () => {
     dispatch(setSelectedCourseData(null));
 
     toast.success("LogOut Successfully");
+   navigate("/login");
   } catch (error) {
   dispatch(setCreatorCourseData([]));
 
