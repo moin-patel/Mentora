@@ -34,8 +34,8 @@ export const signUp=async (req,res)=>{
         let token = await genToken(user._id) // user._id kaha se aa rahae hai? user model me jab ham new user create karte hai to mongoose automatically usko ek unique _id assign kar deta hai. to user._id se ham us user ka unique id le rahe hai jo database me store hua hai. is id ko ham token generate karne ke liye use karte hai taki jab user login kare to uska token valid ho aur ham us token se user ki identity verify kar sake.or genToken function me ham userId ko payload me add karte hai taki jab token verify kare to ham userId ko access kar sake aur uske hisab se data fetch ya update kar sake.
         res.cookie("token",token,{
             httpOnly:true,
-            secure:false,
-            sameSite: "Strict",
+            secure:true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000 // token ki expiry time set kar rahe hai 7 din ke liye. 
         })
         return res.status(201).json(user)
@@ -70,8 +70,8 @@ export const login = async (req, res) => {
         let token = await genToken(user._id);
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,
-            sameSite: "Strict",
+            secure: true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
@@ -112,8 +112,8 @@ export const googleSignup = async (req,res) => {
         let token =await genToken(user._id)
         res.cookie("token",token,{
             httpOnly:true,
-            secure:false,
-            sameSite: "Strict",
+            secure:true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         return res.status(200).json(user)
@@ -140,8 +140,8 @@ export const googlelogin = async (req,res) => {
         let token =await genToken(user._id)
         res.cookie("token",token,{
             httpOnly:true,
-            secure:false,
-            sameSite: "Strict",
+            secure:true,
+            sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000
         })
         return res.status(200).json(user)
