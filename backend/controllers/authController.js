@@ -3,8 +3,7 @@ import validator from "validator"
 import bcrypt from "bcryptjs"
 import User from "../models/userModel.js"
 import sendMail from "../configs/Mail.js"
-import { setUserData } from "../../frontend/src/redux/userSlice.js"
-// import { setCourseData, setCreatorCourseData, setSelectedCourseData } from "../../frontend/src/redux/courseSlice.js"
+
 
 
 export const signUp=async (req,res)=>{
