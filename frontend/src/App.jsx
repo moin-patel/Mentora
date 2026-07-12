@@ -24,7 +24,7 @@ import MyEnrolledCourses from "./pages/MyEnrolledCourses";
 import GetAllReviews from "./customHooks/getAllReviews";
  import SearchWithAi from "./pages/SearchWithAi";
 
-export const serverUrl = "http://localhost:8000";
+export const serverUrl = "https://mentoraa-fkwz.onrender.com";
 function App() {
   useCurrentUser();
   GetCreatorCourseData();
