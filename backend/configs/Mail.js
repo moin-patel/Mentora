@@ -1,42 +1,66 @@
-import nodemailer from "nodemailer"
-import dotenv from "dotenv"
-dotenv.config()
-// const transporter = nodemailer.createTransport({
-//   service: "Gmail",
-//   port: 465,
-//   secure: true, 
-//   auth: {
-//     user: process.env.EMAIL,
-//     pass: process.env.EMAIL_PASS,
-//   },
-// });
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+
 const transporter = nodemailer.createTransport({
 
-host:"smtp.gmail.com",
+  host: "smtp.gmail.com",
 
-port:587,
+  port: 587,
 
-secure:false,
+  secure: false,
 
-connectionTimeout:10000,
+  family: 4, // 👈 force IPv4
 
-auth:{
- user:process.env.EMAIL,
- pass:process.env.EMAIL_PASS
-}
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
+
+  connectionTimeout: 10000,
+
+  socketTimeout: 10000,
 
 });
 
-const sendMail=async (to,otp) => {
-    transporter.sendMail({
-        from:process.env.EMAIL,
-        to:to,
-        subject:"Reset Your Password",
-        html:`<p>Your OTP for Password Reset is <b>${otp}</b>.
-        It expires in 5 minutes.</p>`
-    })
-}
+
+const sendMail = async (to, otp) => {
+
+  try {
+
+    const info = await transporter.sendMail({
+
+      from: process.env.EMAIL,
+
+      to: to,
+
+      subject: "Reset Your Password",
+
+      html: `
+        <p>Your OTP for Password Reset is 
+        <b>${otp}</b></p>
+        <p>It expires in 5 minutes.</p>
+      `
+
+    });
 
 
-export default sendMail
+    console.log("MAIL SENT:", info.messageId);
 
+    return true;
+
+
+  } catch(error){
+
+    console.log("MAIL ERROR:", error);
+
+    throw error;
+
+  }
+
+};
+
+
+export default sendMail;
