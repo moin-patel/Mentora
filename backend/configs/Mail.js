@@ -3,68 +3,54 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+
 const transporter = nodemailer.createTransport({
 
-host:"smtp.gmail.com",
+  host: "142.250.152.108",
 
-port:465,
+  port: 587,
 
-secure:true,
+  secure: false,
 
-family:4,
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
 
-auth:{
-user:process.env.EMAIL,
-pass:process.env.EMAIL_PASS
-}
-
-});
-
-transporter.verify((error, success)=>{
-
- if(error){
-   console.log("SMTP ERROR",error);
- }
- else{
-   console.log("SMTP READY");
- }
-
-});
-
-
-const sendMail = async (to, otp) => {
-
-  try {
-
-    const info = await transporter.sendMail({
-
-      from: process.env.EMAIL,
-
-      to: to,
-
-      subject: "Reset Your Password",
-
-      html: `
-        <p>Your OTP for Password Reset is 
-        <b>${otp}</b></p>
-        <p>It expires in 5 minutes.</p>
-      `
-
-    });
-
-
-    console.log("MAIL SENT:", info.messageId);
-
-    return true;
-
-
-  } catch(error){
-
-    console.log("MAIL ERROR:", error);
-
-    throw error;
-
+  tls:{
+    rejectUnauthorized:false
   }
+
+});
+
+
+transporter.verify((error,success)=>{
+
+  if(error){
+    console.log("SMTP ERROR",error);
+  }
+  else{
+    console.log("SMTP READY");
+  }
+
+});
+
+
+const sendMail = async(to,otp)=>{
+
+  await transporter.sendMail({
+
+    from:process.env.EMAIL,
+
+    to,
+
+    subject:"Reset Your Password",
+
+    html:`
+    <p>Your OTP is <b>${otp}</b></p>
+    `
+
+  });
 
 };
 
