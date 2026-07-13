@@ -118,7 +118,7 @@ function App() {
      <Route
     path="/viewcourse/:courseId"
     element={ 
-      userData?.role === "educator"
+      userData?
         ? <ViewCourse />
         : <Navigate to="/signup" />
     }
