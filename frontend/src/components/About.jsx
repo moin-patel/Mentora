@@ -6,12 +6,10 @@ function About() {
 
   <section className="relative w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-50 overflow-hidden py-24">
 
-  {/* Background Blur */}
   <div className="absolute -top-24 -left-24 w-[350px] h-[350px] bg-blue-500/20 rounded-full blur-[140px]"></div>
 
   <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-indigo-500/20 rounded-full blur-[140px]"></div>
 
-  {/* Main Container */}
   <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
 
     {/* Heading */}
@@ -65,15 +63,15 @@ function About() {
 
       </div>
 
-      {/* RIGHT SIDE STARTS HERE */}
+   
       <div className="flex flex-col justify-center">
 
-        {/* Section Label */}
+     
 <span className="inline-flex w-fit items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm">
   Why Choose Mentora
 </span>
 
-{/* Main Heading */}
+
 <h2 className="mt-6 text-4xl lg:text-5xl font-bold text-slate-100 leading-tight">
   Everything You Need
   <br />
@@ -82,7 +80,7 @@ function About() {
   </span>
 </h2>
 
-{/* Description */}
+
 <p className="mt-6 text-slate-600 leading-8 text-lg">
   Mentora combines modern technology with practical learning to help
   students build real-world skills. Learn from expert educators,
