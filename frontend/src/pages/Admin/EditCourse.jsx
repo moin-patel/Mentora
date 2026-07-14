@@ -40,7 +40,6 @@ function EditCourse() {
         );
         const data = result.data;
 
-        // Data milte hi saari states ek saath update karein
         setTitle(data.title || "");
         setSubTitle(data.subTitle || "");
         setDescription(data.description || "");
@@ -113,7 +112,7 @@ function EditCourse() {
         withCredentials: true,
       });
       toast.success("Course Deleted");
-      // const filteredCourses = creatorCourseData.filter(c => c._id !== courseId);
+
       const filteredCourses = courseData.filter((c) => c._id !== courseId);
       dispatch(setCreatorCourseData(filteredCourses));
 
