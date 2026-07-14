@@ -1,13 +1,13 @@
 
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeftLong, FaSpinner } from "react-icons/fa6"; // FaSpinner import kiya
+import { FaArrowLeftLong, FaSpinner } from "react-icons/fa6"; 
 
 function MyEnrolledCourses() {
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.user);
 
-  // Loading state (agar userData abhi tak nahi aaya)
+
   if (!userData) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4  bg-gradient-to-br from-slate-400 via-white to-slate-600 ">
