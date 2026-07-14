@@ -19,7 +19,6 @@ return (
 <>
 <section className="relative overflow-hidden  py-24 bg-slate-50">
 
-  {/* Background Blur */}
   <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-200/30 blur-[140px]" />
 
   <div className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-indigo-200/30 blur-[150px]" />
@@ -110,7 +109,7 @@ return (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
 
 
-                    {/* Web Development */}
+                 
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-blue-100 flex items-center justify-center">
               <TbDeviceDesktopAnalytics className="text-3xl text-blue-600 group-hover:scale-110 duration-300" />
@@ -125,7 +124,6 @@ return (
             </p>
           </div>
 
-          {/* UI UX */}
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-pink-100 flex items-center justify-center">
               <LiaUikit className="text-3xl text-pink-600 group-hover:scale-110 duration-300" />
@@ -140,7 +138,7 @@ return (
             </p>
           </div>
 
-          {/* App Development */}
+
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-green-100 flex items-center justify-center">
               <MdAppShortcut className="text-3xl text-green-600 group-hover:scale-110 duration-300" />
@@ -155,7 +153,7 @@ return (
             </p>
           </div>
 
-          {/* Ethical Hacking */}
+     
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-red-100 flex items-center justify-center">
               <FaHackerrank className="text-3xl text-red-500 group-hover:scale-110 duration-300" />
@@ -170,7 +168,7 @@ return (
             </p>
           </div>
 
-          {/* AI ML */}
+        
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-purple-100 flex items-center justify-center">
               <TbBrandOpenai className="text-3xl text-purple-600 group-hover:scale-110 duration-300" />
@@ -185,7 +183,7 @@ return (
             </p>
           </div>
 
-          {/* Data Science */}
+
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-cyan-100 flex items-center justify-center">
               <SiGoogledataproc className="text-3xl text-cyan-600 group-hover:scale-110 duration-300" />
@@ -200,7 +198,7 @@ return (
             </p>
           </div>
 
-          {/* Data Analytics */}
+   
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-orange-100 flex items-center justify-center">
               <BsClipboardDataFill className="text-3xl text-orange-500 group-hover:scale-110 duration-300" />
@@ -215,7 +213,7 @@ return (
             </p>
           </div>
 
-          {/* AI Tools */}
+       
           <div className="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
             <div className="w-16 h-16 mx-auto rounded-2xl bg-indigo-100 flex items-center justify-center">
               <SiOpenaigym className="text-3xl text-indigo-600 group-hover:scale-110 duration-300" />
@@ -234,13 +232,12 @@ return (
 
     </div>
 
-    {/* Bottom CTA */}
 
     <div className="mt-24">
 
       <div className="rounded-[36px] bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 p-10 lg:p-14 shadow-2xl relative overflow-hidden">
 
-        {/* Blur */}
+
 
         <div className="absolute -left-24 -top-24 w-72 h-72 rounded-full bg-blue-500/20 blur-[120px]" />
 
