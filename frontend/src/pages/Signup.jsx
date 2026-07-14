@@ -24,8 +24,58 @@ function SignUp() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+ const validateForm = () => {
+
+  // Name validation
+  const nameRegex = /^[A-Za-z\s]+$/;
+
+  if (!nameRegex.test(name)) {
+    toast.error("Name should contain only characters");
+    return false;
+  }
+
+
+  // Password length
+  if(password.length < 8){
+    toast.error("Password must be at least 8 characters");
+    return false;
+  }
+
+
+  // Password strength
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/;
+
+
+  if(!passwordRegex.test(password)){
+    toast.error(
+      "Password must contain uppercase, lowercase, number and special character"
+    );
+    return false;
+  }
+
+
+  // Email inside password check
+
+  if(password.toLowerCase().includes(email.split("@")[0].toLowerCase())){
+    toast.error("Password cannot contain email or username");
+    return false;
+  }
+
+
+  return true;
+
+};
+
+
 
   const handleSignUp = async () => {
+
+
+if(!validateForm()){
+  return;
+}
+
     try {
       setLoading(true);
 
@@ -43,7 +93,9 @@ function SignUp() {
       );
       dispatch(setUserData(result.data));
       toast.success("Sign Up Successfully");
-      navigate("/");
+       setTimeout(() => {
+  window.location.href = "/";
+}, 1000); 
     } catch (error) {
       console.log(error);
 
@@ -66,7 +118,9 @@ const googleSignUp = async () => {
         { withCredentials: true },
       );
       dispatch(setUserData(result.data));
-      navigate("/");
+        setTimeout(() => {
+            window.location.href = "/";
+          }, 1000); 
       toast.success("SignUp Successfully");
     } catch (error) {
       console.log(error);
@@ -104,7 +158,13 @@ const googleSignUp = async () => {
               type="text"
               placeholder="Your name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+             onChange={(e)=>{
+
+                   const value = e.target.value;
+                   if(/^[A-Za-z\s]*$/.test(value)){
+                     setName(value);
+                   }
+                   }}
               className="border border-gray-300 w-full h-12 px-4 rounded-xl outline-none transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:shadow-blue-200"
             />
           </div>
@@ -130,7 +190,10 @@ const googleSignUp = async () => {
               type={show ? "text" : "password"}
               placeholder="********"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e)=>{
+                 const value = e.target.value;
+                 setPassword(value);
+                 }}
               className="border border-gray-300 w-full h-12 px-4 rounded-xl outline-none transition-all duration-300 focus:border-blue-500 focus:shadow-lg focus:shadow-blue-200"
             />
 
