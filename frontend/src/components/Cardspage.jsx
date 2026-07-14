@@ -14,11 +14,9 @@ function Cardspage() {
 
   <section className="relative w-full bg-slate-50 py-14 md:py-24 px-3 sm:px-5 md:px-8 lg:px-12 overflow-hidden">
 
-    {/* Background Blur */}
     <div className="absolute top-20 right-10 w-44 h-44 bg-blue-200/20 rounded-full blur-[90px]" />
     <div className="absolute bottom-20 left-10 w-44 h-44 bg-indigo-200/20 rounded-full blur-[90px]" />
 
-    {/* Heading */}
     <div className="relative z-10 text-center max-w-3xl mx-auto mb-10 md:mb-16">
 
       <span className="text-blue-600 font-bold tracking-widest uppercase text-xs md:text-sm">
@@ -36,7 +34,6 @@ function Cardspage() {
 
     </div>
 
-    {/* Cards */}
     <div
       className="
       relative
