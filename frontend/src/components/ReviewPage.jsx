@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAllReview } from '../redux/reviewSlice'; // Apna sahi path dalein
+import { setAllReview } from '../redux/reviewSlice'; 
 import ReviewCard from './ReviewCard';
 import { serverUrl } from '../App';
 
@@ -8,7 +8,6 @@ function ReviewPage() {
   const dispatch = useDispatch();
   const { allReview } = useSelector((state) => state.review);
 
-  // Backend se reviews fetch karne ka function (agar API call yahan hai)
   const fetchReviews = async () => {
     try {
   const response = await fetch(`${serverUrl}/api/review/allReview`);
@@ -23,7 +22,6 @@ function ReviewPage() {
     fetchReviews();
   }, []);
 
-  // Sirf latest 6 reviews show karne ke liye slice kiya hai
   const latestReviews = allReview.slice(0, 6);
 
   return (
@@ -39,7 +37,7 @@ function ReviewPage() {
         {latestReviews.length > 0 ? (
           latestReviews.map((item, index) => (
             <ReviewCard 
-              key={item._id || index} // Unique ID use karna behtar hai
+              key={item._id || index} 
               rating={item.rating}
               image={item.user?.photoUrl}
               comment={item.comment} 
