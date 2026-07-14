@@ -1,58 +1,37 @@
-import nodemailer from "nodemailer";
+
+import { Resend } from "resend";
 import dotenv from "dotenv";
 
 dotenv.config();
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-const transporter = nodemailer.createTransport({
+const sendMail = async (to, otp) => {
+  try {
+    const data = await resend.emails.send({
+      from: "Mentora <onboarding@resend.dev>",
 
-  host: "142.250.152.108",
+      to: to,
 
-  port: 587,
+      subject: "Reset Your Password OTP",
 
-  secure: false,
+      html: `
+                <h2>Mentora Password Reset</h2>
 
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASS,
-  },
+                <p>Your OTP for password reset is:</p>
 
-  tls:{
-    rejectUnauthorized:false
+                <h1>${otp}</h1>
+
+                <p>This OTP will expire in 5 minutes.</p>
+            `,
+    });
+
+    console.log("Email Sent Successfully:", data);
+  } catch (error) {
+    console.log("Resend Email Error:", error);
+
+    throw error;
   }
-
-});
-
-
-transporter.verify((error,success)=>{
-
-  if(error){
-    console.log("SMTP ERROR",error);
-  }
-  else{
-    console.log("SMTP READY");
-  }
-
-});
-
-
-const sendMail = async(to,otp)=>{
-
-  await transporter.sendMail({
-
-    from:process.env.EMAIL,
-
-    to,
-
-    subject:"Reset Your Password",
-
-    html:`
-    <p>Your OTP is <b>${otp}</b></p>
-    `
-
-  });
-
 };
-
 
 export default sendMail;
