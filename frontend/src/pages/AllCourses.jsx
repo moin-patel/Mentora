@@ -11,10 +11,9 @@ import { useSelector } from "react-redux";
 function AllCourses() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
-  // Applied filter
+  
   const [category, setCategory] = useState([]);
 
-  // Temporary selected filter
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [loading , setLoading] = useState(false);
 
@@ -33,7 +32,6 @@ function AllCourses() {
     }
   };
 
-  // Apply selected filters
 const applyFilter = () => {
   setLoading(true);
 
@@ -59,7 +57,6 @@ const applyFilter = () => {
 return (
 <div className="min-h-screen bg-slate-100">
 
-  {/* ================= Mobile Filter Button ================= */}
 
 {/* Mobile Filter Button */}
 
@@ -93,7 +90,7 @@ return (
   Filter
 </button>
 
-  {/* ================= Overlay ================= */}
+
 
   {isSidebarVisible && (
     <div
@@ -111,7 +108,7 @@ return (
 
   <div className="flex">
 
-    {/* ================= Sidebar ================= */}
+
 
     <aside
       className={`
@@ -340,7 +337,6 @@ return (
 
     </aside>
 
-    {/* ================= Main ================= */}
 
     <main
       className="
@@ -352,7 +348,7 @@ return (
         py-24
       "
     >
-            {/* ================= Page Heading ================= */}
+  
 
       <div className="mb-10">
 
@@ -400,7 +396,6 @@ return (
 
       </div>
 
-      {/* ================= Selected Categories ================= */}
 
       {category.length > 0 && (
 
@@ -439,7 +434,7 @@ return (
 
       )}
 
-      {/* ================= Courses Grid ================= */}
+
 
       <div
         className="
@@ -532,7 +527,6 @@ return (
 
       </div>
 
-      {/* ================= Bottom CTA ================= */}
 
       <div className="mt-14 lg:mt-20">
 
