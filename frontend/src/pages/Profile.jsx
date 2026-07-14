@@ -11,7 +11,7 @@ function Profile() {
   return (
 
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-100 py-10 px-4 flex items-center justify-center">
-  {/* Card Container: Slightly transparent white to blend with gradient */}
+
   <div className="bg-slate-500 backdrop-blur-xl rounded-3xl p-8 md:p-10 max-w-lg w-full shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)]  relative">
     
     {/* Back Button */}
@@ -44,7 +44,6 @@ function Profile() {
       </div>
     </div>
 
-    {/* Profile Info Fields - Designed to look like an Input Form */}
     <div className="mt-10 space-y-4">
       <div className="bg-slate-100/50 p-4 rounded-2xl border border-slate-200">
         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Email Address</p>
