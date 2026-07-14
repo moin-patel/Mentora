@@ -1,6 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/Mentora.png"; // replace with actual path
+import logo from "../assets/Mentora.png"; 
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 const Footer = () => {
