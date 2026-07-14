@@ -2,7 +2,7 @@
 
 import { FaArrowLeftLong, FaLock, FaStar,  } from 'react-icons/fa6';
 import { useNavigate, useParams } from 'react-router-dom';
-import img from "../assets/empty.jpg"; // ERROR 1 FIX: Import add kiya
+import img from "../assets/empty.jpg"; 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useState } from 'react';
 import { setSelectedCourseData } from '../redux/courseSlice';
@@ -30,7 +30,7 @@ const  ViewCourse=()=> {
    
 
  const isEnrolled = userData?.enrolledCourses?.some((item) => {
-  // Check karo ki item object hai ya string
+ 
   const idToCheck = typeof item === 'object' && item !== null ? item._id : item;
   return idToCheck?.toString() === courseId;
 });
@@ -50,8 +50,7 @@ const  ViewCourse=()=> {
       toast.error(error.response.data.message)
     }
     finally {
-    // Ye block hamesha chalega, chahe review success ho ya error aaye
-    // Isse loader har halat mein band ho jayega
+
     setLoading(false); 
   }
 
@@ -72,7 +71,6 @@ const fetchCourseData = () => {
   }
 };
 
-      // Fetch creator info once course data is available
   useEffect(() => {
     const getCreator = async () => {
       if (selectedCourseData?.creator) {
@@ -97,7 +95,7 @@ const fetchCourseData = () => {
   if (creatorData?._id && courseData.length > 0) {
     const creatorCourses = courseData.filter(
       (course) =>
-        course.creator === creatorData._id && course._id !== courseId // Exclude current course
+        course.creator === creatorData._id && course._id !== courseId 
     );
     setSelectedCreatorCourse(creatorCourses);
   }
@@ -205,7 +203,7 @@ useEffect(() => {
         {selectedCourseData?.subTitle}
       </p>
 
-      {/* AVG RATING DIV - Naya Add kiya */}
+ 
       <div className="flex items-center gap-2 mb-4 bg-white/10 w-fit px-3 py-1 rounded-lg">
         <FaStar className="text-yellow-400" />
         <span className="font-bold">{avgRating}</span>
