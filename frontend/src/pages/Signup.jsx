@@ -1,8 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/Mentora.png";
 import google from "../assets/google.jpg";
- // import axios from "axios";
- import api from "../../utils/axiosInstacnce"; // Use the axios instance
+ import api from "../../utils/axiosInstacnce"; 
 import { serverUrl } from "../App";
 import { MdOutlineRemoveRedEye, MdRemoveRedEye } from "react-icons/md";
 
@@ -26,7 +25,6 @@ function SignUp() {
   const navigate = useNavigate();
  const validateForm = () => {
 
-  // Name validation
   const nameRegex = /^[A-Za-z\s]+$/;
 
   if (!nameRegex.test(name)) {
@@ -35,14 +33,13 @@ function SignUp() {
   }
 
 
-  // Password length
+
   if(password.length < 8){
     toast.error("Password must be at least 8 characters");
     return false;
   }
 
 
-  // Password strength
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/;
 
@@ -55,7 +52,6 @@ function SignUp() {
   }
 
 
-  // Email inside password check
 
   if(password.toLowerCase().includes(email.split("@")[0].toLowerCase())){
     toast.error("Password cannot contain email or username");
@@ -79,7 +75,7 @@ if(!validateForm()){
     try {
       setLoading(true);
 
-      const result = await api.post(                     // changes 
+      const result = await api.post(                     // using axios instance here 
         `${serverUrl}/api/auth/signup`,
         {
           name,
@@ -112,7 +108,7 @@ const googleSignUp = async () => {
       let name = user.displayName;
       let email = user.email;
 
-      const result = await api.post(                              // changes 
+      const result = await api.post(                              // usign axiosinstance here 
         serverUrl + "/api/auth/googlesignup",
         { name, email, role },
         { withCredentials: true },
