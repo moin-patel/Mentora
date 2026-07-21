@@ -30,12 +30,12 @@ export const signUp=async (req,res)=>{
             role,
            
             })
-        let token = await genToken(user._id) // user._id kaha se aa rahae hai? user model me jab ham new user create karte hai to mongoose automatically usko ek unique _id assign kar deta hai. to user._id se ham us user ka unique id le rahe hai jo database me store hua hai. is id ko ham token generate karne ke liye use karte hai taki jab user login kare to uska token valid ho aur ham us token se user ki identity verify kar sake.or genToken function me ham userId ko payload me add karte hai taki jab token verify kare to ham userId ko access kar sake aur uske hisab se data fetch ya update kar sake.
+        let token = await genToken(user._id) 
         res.cookie("token",token,{
             httpOnly:true,
             secure:true,
             sameSite: "none",
-            maxAge: 7 * 24 * 60 * 60 * 1000 // token ki expiry time set kar rahe hai 7 din ke liye. 
+            maxAge: 7 * 24 * 60 * 60 * 1000 
         })
         return res.status(201).json(user)
 
@@ -109,8 +109,7 @@ export const logOut = async(req,res)=>{
 
 export const googleSignup = async (req,res) => {
     try {
-        const {name , email , role} = req.body // yaha ham password nahi le rahe hai kyunki google signup me password ki zarurat nahi hoti hai. jab user google se signup karta hai to uska email aur name google se milta hai aur ham usko apne database me store kar dete hai. isliye ham password ko is case me handle nahi kar rahe hai.
-        /// kyuki google signup me user apne google account se login karta hai to uska authentication google ke through hota hai aur ham usko apne database me store karte hai taki jab user login kare to ham usko identify kar sake aur uske hisab se data fetch ya update kar sake. isliye ham password ko is case me handle nahi kar rahe hai. agar future me ham apne application me normal signup bhi allow karna chahte hai to ham password ko handle kar sakte hai. lekin abhi ke liye ham google signup me password ko handle nahi kar rahe hai.
+        const {name , email , role} = req.body 
         let user= await User.findOne({email})
         if(!user){
             user = await User.create({
@@ -143,7 +142,7 @@ export const googlelogin = async (req,res) => {
         if(!user){
             user = await User.create({
             name , email ,role
-        })  // agar user google login kar raha hai aur uska email hamare database me nahi hai to ham usko create kar denge taki jab user login kare to ham usko identify kar sake aur uske hisab se data fetch ya update kar sake. isliye ham google login me bhi user ko create kar rahe hai agar wo pehle se exist nahi karta hai. lekin agar user pehle se exist karta hai to ham usko create nahi karenge aur uska token generate karenge taki jab user login kare to ham usko identify kar sake aur uske hisab se data fetch ya update kar sake.
+        })  
         }
         let token =await genToken(user._id)
         res.cookie("token",token,{
