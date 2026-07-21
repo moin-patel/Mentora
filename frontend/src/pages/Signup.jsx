@@ -40,26 +40,32 @@ function SignUp() {
   }
 
 
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]+$/;
+
+if (!passwordRegex.test(password)) {
+  toast.error(
+    "Password must contain letters and numbers"
+  );
+  return false;
+}
 
 
-  if(!passwordRegex.test(password)){
-    toast.error(
-      "Password must contain uppercase, lowercase, number and special character"
-    );
-    return false;
-  }
+// Password cannot start with only numbers
+if (/^\d+$/.test(password)) {
+  toast.error(
+    "Password cannot contain only numbers"
+  );
+  return false;
+}
 
+// Password cannot contain email username
+const username = email.split("@")[0].toLowerCase();
 
-
-  if(password.toLowerCase().includes(email.split("@")[0].toLowerCase())){
-    toast.error("Password cannot contain email or username");
-    return false;
-  }
-
-
-  return true;
+if(password.toLowerCase().includes(username)){
+  toast.error(
+    "Password cannot contain email or username"
+  );
+  return false;
 
 };
 
