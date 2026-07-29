@@ -15,7 +15,7 @@ api.interceptors.response.use(
   (error) => {
 
     if (error.code === "ECONNABORTED") {
-      toast.error("Internet slow hai, please try again");
+      toast.error("Slow network, please try again");
     }
 
     else if (!error.response) {
