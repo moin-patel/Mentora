@@ -25,48 +25,24 @@ function SignUp() {
   const navigate = useNavigate();
 const validateForm = () => {
 
-const nameRegex = /^[A-Za-z\s]+$/;
+    const nameRegex = /^[A-Za-z\s]+$/;
 
-if (!nameRegex.test(name)) {
-toast.error("Name should contain only characters");
-return false;
-}
+    if (!name.trim()) {
+        toast.error("Name is required");
+        return false;
+    }
 
+    if (!nameRegex.test(name)) {
+        toast.error("Name should contain only characters");
+        return false;
+    }
 
+    if (password.length <= 4) {
+        toast.error("Password must be at least 4 characters");
+        return false;
+    }
 
-if(password.length < 8){
-toast.error("Password must be at least 8 characters");
-return false;
-}
-
-const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]+$/;
-
-if (!passwordRegex.test(password)) {
-toast.error(
-"Password must contain at least one letter and one number"
-);
-return false;
-}
-
-
-if (/^\d+$/.test(password)) {
-toast.error(
-"Password cannot contain only numbers"
-);
-return false;
-}
-
-
-const username = email.split("@")[0].toLowerCase();
-
-if(password.toLowerCase().includes(username)){
-toast.error(
-"Password cannot contain email or username"
-);
-return false;
-}
-
-return true;
+    return true;
 };
 
   const handleSignUp = async () => {
