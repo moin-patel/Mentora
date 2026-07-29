@@ -37,7 +37,7 @@ const validateForm = () => {
         return false;
     }
 
-    if (password.length <= 4) {
+    if (password.length < 3) {
         toast.error("Password must be at least 4 characters");
         return false;
     }
