@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-  baseURL: "https://mentoraa-fkwz.onrender.com"",
+  baseURL: "https://mentoraa-fkwz.onrender.com",
   timeout: 15000,
 });
 
