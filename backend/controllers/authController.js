@@ -18,7 +18,7 @@ export const signUp=async (req,res)=>{
         if(!validator.isEmail(email)){
             return res.status(400).json({message:"Please enter valid Email"})
         }
-        if(password.length < 8){
+        if(password.length < 6){
             return res.status(400).json({message:"Please enter a Strong Password"})
         }
         
