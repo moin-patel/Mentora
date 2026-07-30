@@ -23,27 +23,49 @@ function SignUp() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-const validateForm = () => {
+ const validateForm = () => {
 
-    const nameRegex = /^[A-Za-z\s]+$/;
+  // Name validation
+  const nameRegex = /^[A-Za-z\s]+$/;
 
-    if (!name.trim()) {
-        toast.error("Name is required");
-        return false;
-    }
+  if (!nameRegex.test(name)) {
+    toast.error("Name should contain only characters");
+    return false;
+  }
 
-    if (!nameRegex.test(name)) {
-        toast.error("Name should contain only characters");
-        return false;
-    }
 
-    if (password.length < 3) {
-        toast.error("Password must be at least 4 characters");
-        return false;
-    }
+  // Password length
+  if(password.length < 8){
+    toast.error("Password must be at least 8 characters");
+    return false;
+  }
 
-    return true;
+
+  // Password strength
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/;
+
+
+  if(!passwordRegex.test(password)){
+    toast.error(
+      "Password must contain uppercase, lowercase, number and special character"
+    );
+    return false;
+  }
+
+
+  // Email inside password check
+
+  if(password.toLowerCase().includes(email.split("@")[0].toLowerCase())){
+    toast.error("Password cannot contain email or username");
+    return false;
+  }
+
+
+  return true;
+
 };
+
 
   const handleSignUp = async () => {
 
