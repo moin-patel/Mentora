@@ -35,32 +35,19 @@ function SignUp() {
 
 
   // Password length
-  if(password.length < 8){
-    toast.error("Password must be at least 8 characters");
+  if(password.length < 6){
+    toast.error("Password must be at least 6 characters");
     return false;
   }
 
 
   // Password strength
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/;
+const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
 
-
-  if(!passwordRegex.test(password)){
-    toast.error(
-      "Password must contain uppercase, lowercase, number and special character"
-    );
-    return false;
-  }
-
-
-  // Email inside password check
-
-  if(password.toLowerCase().includes(email.split("@")[0].toLowerCase())){
-    toast.error("Password cannot contain email or username");
-    return false;
-  }
-
+if (!passwordRegex.test(password)) {
+  toast.error("Password must contain letters and numbers");
+  return false;
+} 
 
   return true;
 
